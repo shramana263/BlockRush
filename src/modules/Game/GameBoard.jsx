@@ -53,8 +53,23 @@ const GameBoard = () => {
       block.forEach((item, index)=>{
         blockArray[item.i][item.j]=1
       })
- 
       setBlockArray([...blockArray])
+
+      setTimeout(() => {
+       blockArray.forEach((row, i)=>{
+          row.forEach((item, j)=>{
+            if(blockArray[blockArray.length-i][row.length-j-1]==1 && i+1<blockArray.length-i){
+              console.log(blockArray[blockArray.length-i][row.length-j-1])
+              // console.log(i,j)
+              // console.log(blockArray[i][j]) 
+              blockArray[i+1][j]=1
+              blockArray[i][j]=0
+              setBlockArray([...blockArray])
+            }
+          })
+       })
+      }, 3000);
+ 
     }
 
   return (
